@@ -1,0 +1,214 @@
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    height: inherit;
+}
+
+body {
+    height: 100vh;
+
+    background: url("./assets/img/background.png");
+}
+
+.App {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+}
+
+.container {
+    width: 1280px;
+    margin: auto 0;
+
+}
+
+.main_title {
+    margin: 50px;
+    text-align: center;
+    color: #fff;
+    font-size: 36px;
+    font-weight: 100;
+}
+
+.goods {
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, 328px);
+    grid-gap: 40px;
+
+    font-family: "Trebuchet MS";
+}
+
+.goods_body{
+    position: relative;
+    height: 488px;
+    width: 328px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.__blueCard {
+    background: linear-gradient(-225deg, transparent 31px, #1698d9 0),
+    linear-gradient(45deg, transparent 15px, rgba(0, 0, 0, 0));
+}
+
+.__pinkCard {
+    background: linear-gradient(-225deg, transparent 31px, #d91667 0),
+    linear-gradient(45deg, transparent 15px, rgba(0, 0, 0, 0));
+}
+
+.__disableCard {
+    background: linear-gradient(-225deg, transparent 31px, #b3b3b3 0),
+    linear-gradient(45deg, transparent 15px, rgba(0, 0, 0, 0));
+}
+
+.goods_card:hover .__blueCard {
+    background: linear-gradient(-225deg, transparent 31px, #2ea8e6 0),
+    linear-gradient(45deg, transparent 15px, rgba(0, 0, 0, 0));;
+}
+ .goods_card:hover .__blueCircle{
+     background: #2ea8e6;
+ }
+
+.goods_card:hover .__pinkCard {
+    background: linear-gradient(-225deg, transparent 31px, #e62e7a 0),
+    linear-gradient(45deg, transparent 15px, rgba(0, 0, 0, 0));;
+}
+.goods_card:hover .__pinkCircle{
+    background: #e62e7a;
+}
+
+ .goods_item {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    height: 480px;
+    width: 320px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background: linear-gradient(-225deg, transparent 30px, #f2f2f2 0),
+    linear-gradient(45deg, transparent 15px, rgba(0, 0, 0, 0));
+}
+
+ .__disable {
+     opacity: 0.5;
+ }
+
+.header {
+    margin: 23px 47px;
+    color: #666666;
+    font-size: 16px;
+}
+
+.overhead {
+    color: #d91667;
+}
+
+.header_title {
+    margin: 15px 0 0;
+
+    color: #000000;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.__big {
+    font-size: 48px;
+}
+
+.header_subtitle {
+    margin: 15px 0 0;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.goods_circle {
+    position: absolute;
+    bottom: 11px;
+    right: 11px;
+    z-index: 100;
+    width: 80px;
+    height: 80px;
+
+    color: #ffffff;
+    text-align: center;
+
+    border-radius: 50%;
+}
+
+.__blueCircle {
+    background: #1698d9;
+}
+
+.__pinkCircle {
+    background: #d91667;
+}
+
+.__disableCircle {
+    background: #b3b3b3;
+}
+
+.goods_weight {
+    position: relative;
+    top: 20px
+}
+
+.weight_amount {
+    font-size: 42px;
+    line-height: 22px;
+}
+
+.weight_measure {
+    font-size: 21px;
+    line-height: 22px;
+}
+
+.catPhoto {
+    position: absolute;
+    right: -24px;
+    bottom: -88px;
+}
+
+.card_footer {
+    margin-top: 15px;
+    text-align: center;
+
+    color: #fff;
+    font-size: 13px;
+}
+
+.card_footer__disabled {
+    color: #ffff66;
+}
+
+.card_buy {
+    color: #1698d9;
+}
+
+.card_link {
+    text-decoration: none;
+    border-bottom: 1px dashed #1698d9;
+    color: #1698d9;
+}
+
+@media (max-width: 1170px) {
+
+    .goods_card:last-child {
+        grid-column: 1/3;
+    }
+}
+
+@media (max-width: 710px) {
+    .goods_card:last-child {
+        grid-column: auto;
+    }
+}
+
