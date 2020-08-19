@@ -17,7 +17,7 @@ class App extends React.Component {
         cardThree:{
             isSelected: true,
             isFocus:true,
-            isDisable: false
+            isDisable: true
         },
     }
 
