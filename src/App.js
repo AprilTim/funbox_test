@@ -1,52 +1,48 @@
 import React from 'react';
 import './App.css';
 import catPhoto from './assets/img/Cat.png'
-import './assets/font/exo2.0-Thin.otf'
 
 class App extends React.Component {
     state = {
-        card_one: true,
-        card_two: true,
-        card_three: true,
-        isFocusOne:true,
-        isFocusTwo:true,
-        isFocusThree:true,
-        isDisableCardOne: false,
-        isDisableCardTwo: false,
-        isDisableCardThree: false,
+        cardOne:{
+            isSelected: true,
+            isFocus:true,
+            isDisable: false
+        },
+        cardTwo:{
+            isSelected: true,
+            isFocus:true,
+            isDisable: false
+        },
+        cardThree:{
+            isSelected: true,
+            isFocus:true,
+            isDisable: false
+        },
     }
 
-    focus = () => {
-        this.setState({isFocus: false},console.log(this.state.card_one,this.state.isFocus))
+    focus = (e) => {
+        let id = `card${e.currentTarget.id}`
+        this.setState({[id]:{...this.state[id],isFocus: false}})
     }
 
     selectGood = (e) => {
-        let id = e.currentTarget.id
-        this.setState({[id]: !this.state[id],isFocus: true}, console.log(this.state[id]))
-    }
-
-    zero = (x) => {
-        let y = this.state.card_one
-        if (y){
-            x = "goods_body __blueCard"
-        } else {
-            x = "goods_body __pinkCard"
-        }
+        let id =`card${e.currentTarget.id}`
+        this.setState({[id]: {...this.state[id],isSelected:!this.state[id].isSelected,isFocus: true}})
     }
 
     render() {
-
         return (
             <div className="App">
                 <div className="container">
                     <h1 className="main_title">Ты сегодня покормил кота?</h1>
                     <div className="goods">
-                        <div onPointerLeave={this.focus}  className="goods_card">
-                            <div onClick={this.selectGood} id='card_one' className={`goods_body ${this.state.isDisableCardOne ? '__disableCard' : this.state.card_one ? '__blueCard' : '__pinkCard'}`}>
+                        <div onPointerLeave={this.focus} id='One' className="goods_card">
+                            <div onClick={this.selectGood} id='One' className={`goods_body ${this.state.cardOne.isDisable ? '__disableCard' : this.state.cardOne.isSelected ? '__blueCard' : '__pinkCard'}`}>
                                 <div className={`goods_item `}>
-                                    <div className={`${this.state.isDisableCardOne ? '__disable':null}`}>
+                                    <div className={`${this.state.cardOne.isDisable ? '__disable':null}`}>
                                         <header className="header">
-                                            {this.state.isFocus || this.state.card_one ?
+                                            {this.state.cardOne.isFocus || this.state.cardOne.isSelected ?
                                                 <div>Сказочное заморское яство</div> :
                                                 <div className="overhead">Котэ не одобряет?</div>
                                             }
@@ -61,7 +57,7 @@ class App extends React.Component {
                                             </div>
                                         </header>
                                         <div
-                                            className={`goods_circle ${this.state.isDisableCardOne ? '__disableCircle' : this.state.card_one ? '__blueCircle' : '__pinkCircle'}`}>
+                                            className={`goods_circle ${this.state.cardOne.isDisable ? '__disableCircle' : this.state.cardOne.isSelected ? '__blueCircle' : '__pinkCircle'}`}>
                                             <div className="goods_weight">
                                                 <span className="weight_amount">0,5</span>
                                                 <div className="weight_measure">кг</div>
@@ -71,79 +67,39 @@ class App extends React.Component {
                                 </div>
                             </div>
                         </div>
-                            { this.state.isDisableCardOne ?
+                            { this.state.cardOne.isDisable ?
                                 <footer className="card_footer"><span className='card_footer__disabled'>Печалька,с  закончился.</span>
                                 </footer>
-                                :this.state.card_one ?
+                                :this.state.cardOne.isSelected ?
                                     <footer className="card_footer">Чего сидишь? Порадуй котэ, <span className="card_buy">
-                                <a onClick={this.selectGood} id='card_one' className="card_link"
+                                <a onClick={this.selectGood} id='One' className="card_link"
                                    href="#">купи</a>.</span>
                                     </footer>
                                     :<footer className="card_footer">Печень утки разварная с артишоками</footer>}
                         </div>
-                        <div onPointerLeave={this.focus}  className="goods_card">
-                            <div onClick={this.selectGood} id='card_two' className={`goods_body ${this.state.isDisableCardTwo ? '__disableCard' : this.state.card_two ? '__blueCard' : '__pinkCard'}`}>
+                        <div onPointerLeave={this.focus} id='Two' className="goods_card">
+                            <div onClick={this.selectGood} id='Two' className={`goods_body ${this.state.cardTwo.isDisable ? '__disableCard' : this.state.cardTwo.isSelected ? '__blueCard' : '__pinkCard'}`}>
                                 <div className={`goods_item `}>
-                                    <div className={`${this.state.isDisableCardTwo ? '__disable':null}`}>
+                                    <div className={`${this.state.cardTwo.isDisable ? '__disable':null}`}>
                                         <header className="header">
-                                            {this.state.isFocus || this.state.card_two ?
+                                            {this.state.cardTwo.isFocus || this.state.cardTwo.isSelected ?
                                                 <div>Сказочное заморское яство</div> :
                                                 <div className="overhead">Котэ не одобряет?</div>
                                             }
                                             <div>
                                                 <h2 className="header_title"><span
                                                     className="header_title __big">Нямушка</span>
-                                                    <br/>с фуа-гра</h2>
+                                                    <br/>с рыбой</h2>
                                             </div>
                                             <div className="header_subtitle">
-                                                10 порций<br/>
-                                                мышь в подарок
+                                                40 порций<br/>
+                                                2 мыши в подарок
                                             </div>
                                         </header>
                                         <div
-                                            className={`goods_circle ${this.state.isDisableCardTwo ? '__disableCircle' : this.state.card_two ? '__blueCircle' : '__pinkCircle'}`}>
+                                            className={`goods_circle ${this.state.cardTwo.isDisable ? '__disableCircle' : this.state.cardTwo.isSelected ? '__blueCircle' : '__pinkCircle'}`}>
                                             <div className="goods_weight">
-                                                <span className="weight_amount">0,5</span>
-                                                <div className="weight_measure">кг</div>
-                                            </div>
-                                        </div>
-                                        <img className="catPhoto" src={catPhoto}/>
-                                    </div>
-                                </div>
-                            </div>
-                            { this.state.isDisableCardTwo ?
-                                <footer className="card_footer"><span className='card_footer__disabled'>Печалька,с  закончился.</span>
-                                </footer>
-                                :this.state.card_two ?
-                                    <footer className="card_footer">Чего сидишь? Порадуй котэ, <span className="card_buy">
-                                <a onClick={this.selectGood} id='card_two' className="card_link"
-                                   href="#">купи</a>.</span>
-                                    </footer>
-                                    :<footer className="card_footer">Печень утки разварная с артишоками</footer>}
-                        </div>
-                        <div onPointerLeave={this.focus}  className="goods_card">
-                            <div onClick={this.selectGood} id='card_three' className={`goods_body ${this.state.isDisableCardThree ? '__disableCard' : this.state.card_three ? '__blueCard' : '__pinkCard'}`}>
-                                <div className={`goods_item `}>
-                                    <div className={`${this.state.isDisableCardThree ? '__disable':null}`}>
-                                        <header className="header">
-                                            {this.state.isFocus || this.state.card_three ?
-                                                <div>Сказочное заморское яство</div> :
-                                                <div className="overhead">Котэ не одобряет?</div>
-                                            }
-                                            <div>
-                                                <h2 className="header_title"><span
-                                                    className="header_title __big">Нямушка</span>
-                                                    <br/>с фуа-гра</h2>
-                                            </div>
-                                            <div className="header_subtitle">
-                                                10 порций<br/>
-                                                мышь в подарок
-                                            </div>
-                                        </header>
-                                        <div
-                                            className={`goods_circle ${this.state.isDisableCardThree ? '__disableCircle' : this.state.card_three ? '__blueCircle' : '__pinkCircle'}`}>
-                                            <div className="goods_weight">
-                                                <span className="weight_amount">0,5</span>
+                                                <span className="weight_amount">2</span>
                                                 <div className="weight_measure">кг</div>
                                             </div>
                                         </div>
@@ -151,15 +107,56 @@ class App extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            { this.state.isDisableCardThree ?
-                                <footer className="card_footer"><span className='card_footer__disabled'>Печалька,с  закончился.</span>
+                            { this.state.cardTwo.isDisable ?
+                                <footer className="card_footer"><span className='card_footer__disabled'>Печалька,с рыбой закончился.</span>
                                 </footer>
-                                :this.state.card_three ?
+                                :this.state.cardTwo.isSelected ?
                                     <footer className="card_footer">Чего сидишь? Порадуй котэ, <span className="card_buy">
-                                <a onClick={this.selectGood} id='card_three' className="card_link"
+                                <a onClick={this.selectGood} id='Two' className="card_link"
                                    href="#">купи</a>.</span>
                                     </footer>
-                                    :<footer className="card_footer">Печень утки разварная с артишоками</footer>}
+                                    :<footer className="card_footer">Головы щучьи с чесноком да свежайшая сёмгушка.</footer>}
+                        </div>
+                        <div onPointerLeave={this.focus} id='Three' className="goods_card">
+                            <div onClick={this.selectGood} id='Three' className={`goods_body ${this.state.cardThree.isDisable ? '__disableCard' : this.state.cardThree.isSelected ? '__blueCard' : '__pinkCard'}`}>
+                                <div className={`goods_item `}>
+                                    <div className={`${this.state.cardThree.isDisable ? '__disable':null}`}>
+                                        <header className="header">
+                                            {this.state.cardThree.isFocus || this.state.cardThree.isSelected ?
+                                                <div>Сказочное заморское яство</div> :
+                                                <div className="overhead">Котэ не одобряет?</div>
+                                            }
+                                            <div>
+                                                <h2 className="header_title"><span
+                                                    className="header_title __big">Нямушка</span>
+                                                    <br/>с курой</h2>
+                                            </div>
+                                            <div className="header_subtitle">
+                                                100 порций<br/>
+                                                мышей в подарок<br/>
+                                                закзчик доволен
+                                            </div>
+                                        </header>
+                                        <div
+                                            className={`goods_circle ${this.state.cardThree.isDisable ? '__disableCircle' : this.state.cardThree.isSelected ? '__blueCircle' : '__pinkCircle'}`}>
+                                            <div className="goods_weight">
+                                                <span className="weight_amount">5</span>
+                                                <div className="weight_measure">кг</div>
+                                            </div>
+                                        </div>
+                                        <img className="catPhoto" src={catPhoto}/>
+                                    </div>
+                                </div>
+                            </div>
+                            { this.state.cardThree.isDisable ?
+                                <footer className="card_footer"><span className='card_footer__disabled'>Печалька, с курой закончился.</span>
+                                </footer>
+                                :this.state.cardThree.isSelected ?
+                                    <footer className="card_footer">Чего сидишь? Порадуй котэ, <span className="card_buy">
+                                <a onClick={this.selectGood} id='Three' className="card_link"
+                                   href="#">купи</a>.</span>
+                                    </footer>
+                                    :<footer className="card_footer">Филе из цыплят с трюфелями в бульоне.</footer>}
                         </div>
                     </div>
                 </div>
