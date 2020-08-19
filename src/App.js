@@ -42,7 +42,7 @@ class App extends React.Component {
                                 <div className={`goods_item `}>
                                     <div className={`${this.state.cardOne.isDisable ? '__disable':null}`}>
                                         <header className="header">
-                                            {this.state.cardOne.isFocus || this.state.cardOne.isSelected ?
+                                            {this.state.cardTwo.isDisable || this.state.cardOne.isFocus || this.state.cardOne.isSelected ?
                                                 <div>Сказочное заморское яство</div> :
                                                 <div className="overhead">Котэ не одобряет?</div>
                                             }
@@ -82,7 +82,7 @@ class App extends React.Component {
                                 <div className={`goods_item `}>
                                     <div className={`${this.state.cardTwo.isDisable ? '__disable':null}`}>
                                         <header className="header">
-                                            {this.state.cardTwo.isFocus || this.state.cardTwo.isSelected ?
+                                            {this.state.cardTwo.isDisable || this.state.cardTwo.isFocus || this.state.cardTwo.isSelected ?
                                                 <div>Сказочное заморское яство</div> :
                                                 <div className="overhead">Котэ не одобряет?</div>
                                             }
@@ -122,7 +122,7 @@ class App extends React.Component {
                                 <div className={`goods_item `}>
                                     <div className={`${this.state.cardThree.isDisable ? '__disable':null}`}>
                                         <header className="header">
-                                            {this.state.cardThree.isFocus || this.state.cardThree.isSelected ?
+                                            {this.state.cardThree.isDisable || this.state.cardThree.isFocus || this.state.cardThree.isSelected ?
                                                 <div>Сказочное заморское яство</div> :
                                                 <div className="overhead">Котэ не одобряет?</div>
                                             }
